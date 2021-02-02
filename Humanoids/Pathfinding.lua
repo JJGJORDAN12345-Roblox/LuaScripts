@@ -1,17 +1,17 @@
-local larm = script.Parent:FindFirstChild("Left Arm")
-local rarm = script.Parent:FindFirstChild("Right Arm")
+local larm = script.Parent:FindFirstChild("HumanoidRootPart")
+local rarm = script.Parent:FindFirstChild("HumanoidRootPart")
 
 function findNearestTorso(pos)
 	local list = game.Workspace:children()
 	local torso = nil
-	local dist = 125
+	local dist = 10000
 	local temp = nil
 	local human = nil
 	local temp2 = nil
 	for x = 1, #list do
 		temp2 = list[x]
 		if (temp2.className == "Model") and (temp2 ~= script.Parent) then
-			temp = temp2:findFirstChild("Torso")
+			temp = temp2:findFirstChild("HumanoidRootPart")
 			human = temp2:findFirstChild("Humanoid")
 			if (temp ~= nil) and (human ~= nil) and (human.Health > 0) then
 				if (temp.Position - pos).magnitude < dist then
@@ -24,10 +24,14 @@ function findNearestTorso(pos)
 	return torso
 end
 
+
+
+
 while true do
-	wait(0.1)
-	local target = findNearestTorso(script.Parent.Torso.Position)
+	wait(1)
+	local target = findNearestTorso(script.Parent.HumanoidRootPart.Position)
 	if target ~= nil then
-		script.Parent.Humanoid:MoveTo(target.Position, target)
+		script.Parent.Zombie:MoveTo(target.Position, target)
 	end
+
 end
