@@ -31,7 +31,7 @@ while true do
 	wait(1)
 	local target = findNearestTorso(script.Parent.HumanoidRootPart.Position)
 	if target ~= nil then
-		script.Parent.Zombie:MoveTo(target.Position, target)
+		script.Parent.Humanoid:MoveTo(target.Position, target)
 	end
 
 end
